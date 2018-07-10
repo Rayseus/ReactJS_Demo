@@ -1,0 +1,91 @@
+@media all and (min-width: 480px) {
+.page{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header{
+    display: flex;
+    height: 88px;
+    width: 1390px;
+    align-items: center;
+    justify-content: center;
+    /* Rectangle: */
+    background: #FFFFFF;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.50);
+    /* Header: */
+    font-family: Avenir-Heavy;
+    font-size: 36px;
+    color: #000000;
+}
+
+.logo{
+    display: flex;
+    height: 100px;
+    max-width: 100px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.50);
+    margin:50px auto;
+}
+.container{
+    height: 612px;
+    width: 433px;
+    margin-top: 78px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Panel: */
+    background: #FFFFFF;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.50);
+    border-radius: 16px;
+    
+}
+
+/* .line > ul{
+    
+    margin-top: 10px;
+    justify-content: center;
+    text-align: center;
+    height: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.42);
+} */
+
+p{
+    font-family: Avenir-Medium;
+    font-size: 10px;
+    color:red;
+}
+
+input{
+    border: none;
+    display: flex;
+    margin-top: 10px;
+    font-family: Avenir-Medium;
+    font-size: 16px;
+    color: rgba(0,0,0,0.54);
+    line-height: 16px;
+    justify-content: center;
+    height: 40px;
+    width: 300px;
+    border-bottom: 2px solid rgba(0,0,0,0.42);
+}
+
+#submit_button{
+    display: flex;
+    height: 50px;
+    width: 200px;
+    background: #CE3E3E;
+    border-radius: 16px;
+    /* Button: */
+    font-family: Avenir-Heavy;
+    font-size: 16px;
+    color: #FFFFFF;
+    justify-content: center;
+    margin:100px auto;
+}
+}
