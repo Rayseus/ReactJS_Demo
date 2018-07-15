@@ -9,7 +9,7 @@
 .header{
     display: flex;
     height: 88px;
-    width: 1390px;
+    width: 1440px;
     align-items: center;
     justify-content: center;
     /* Rectangle: */
@@ -25,10 +25,11 @@
     display: flex;
     height: 100px;
     max-width: 100px;
+    margin-top: 100px;
     border-radius: 50%;
     background: #FFFFFF;
     box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.50);
-    margin:50px auto;
+    margin:40px auto;
 }
 .container{
     height: 612px;
@@ -46,16 +47,7 @@
     
 }
 
-/* .line > ul{
-    
-    margin-top: 10px;
-    justify-content: center;
-    text-align: center;
-    height: 40px;
-    border-bottom: 1px solid rgba(0,0,0,0.42);
-} */
-
-p{
+#error{
     font-family: Avenir-Medium;
     font-size: 10px;
     color:red;

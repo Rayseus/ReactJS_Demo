@@ -1,0 +1,90 @@
+@media all and (min-width: 480px) {
+    .header{
+        display: flex;
+        height: 88px;
+        width: 1400px;
+        background: #FFFFFF;
+        box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.50);
+        font-family: Avenir-Heavy;
+        font-size: 36px;
+        color: #000000;
+    }
+    .commentContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items:center;
+        margin-top: 20px;
+        background: #FFFFFF;     
+    }
+    .posts{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: 100%;
+        width: 80%;
+        border: 1px solid #C8C8CC;
+        background: #FFFFFF;
+        margin-bottom: 30px;
+    }
+    #title{
+        height: 20%;
+        border: 1px solid #C8C8CC;
+        background: #C8C8CC;
+        text-align: center;
+    }
+    #body{
+        text-align: center;
+        height: 70%;
+    }
+    #stars{
+        display: flex;
+        justify-content: flex-end;
+    }
+    #commentBar{
+        display: flex; 
+        height: 10%;
+        width: 100%;
+        border: 1px solid #C8C8CC;
+        background: #C8C8CC;
+        justify-content: space-between;
+    }
+
+    .arrow{
+        transform: translate(0px, 10px);
+        height: 30px;
+        width: 30px;
+        
+    }
+    #comments{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px, auto;
+        width: 100%;
+        border: 1px solid #C8C8CC;
+        background: #FFFFFF;
+        
+    }
+    #comment{
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        height: 100%;
+        width: 80%;
+        border: 1px solid #979797;
+        background: #FFFFFF;       
+    }
+    #info{
+        display: flex;
+        background: #C8C8CC;
+        justify-content: space-between;
+    }
+    #infoD{
+        width: 50%;
+        text-align: center;
+        border: 1px solid #979797;
+
+        
+    }
+}

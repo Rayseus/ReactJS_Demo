@@ -7,13 +7,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './signup.css';
-import logo from './logo.JPG';
+import logo from './image/logo.JPG';
 
 var password_index = "";
 export default class Signup extends Component{
     constructor(props){
         super(props);
-        this.Change = this.Change.bind(this);
         this.state = {form: {
                       email: {
                             text: "",
@@ -77,12 +76,10 @@ export default class Signup extends Component{
             newFieldObj.error = '';
             newFieldObj.valid = true;
           }
-          console.log(password_index);
           break;
         }
 
         case 'password_c': {
-          console.log(password_index);
           if(value.length === 0){
             newFieldObj.error = 'Require input';
             newFieldObj.valid = false;
@@ -95,7 +92,6 @@ export default class Signup extends Component{
             newFieldObj.error = '';
             newFieldObj.valid = true;
           }
-          
           break;
         }
 
@@ -163,7 +159,7 @@ export default class Signup extends Component{
               onChange={event => this.handleValidation('email', event.target.value)}
               />
               <FormControl.Feedback />
-              <p>{this.state.form.email.error}</p>
+              <p id='error'>{this.state.form.email.error}</p>
               <FormControl
               type="password"
               id="password"
@@ -172,7 +168,7 @@ export default class Signup extends Component{
               onChange={event => this.handleValidation('password', event.target.value)}
               />
               <FormControl.Feedback />
-              <p>{this.state.form.password.error}</p>
+              <p id='error'>{this.state.form.password.error}</p>
               <FormControl
               type="password"
               value={password_c.text}
@@ -180,7 +176,7 @@ export default class Signup extends Component{
               onChange={event => this.handleValidation('password_c', event.target.value)}
               />
               <FormControl.Feedback />
-              <p>{this.state.form.password_c.error}</p>
+              <p id='error'>{this.state.form.password_c.error}</p>
               <FormControl
               type="text"
               id="name"
@@ -189,7 +185,7 @@ export default class Signup extends Component{
               onChange={event => this.handleValidation('name', event.target.value)}
               />
               <FormControl.Feedback />
-              <p>{this.state.form.name.error}</p>
+              <p id='error'>{this.state.form.name.error}</p>
               </div>
               <Button
                 className="btn btn-primary"
