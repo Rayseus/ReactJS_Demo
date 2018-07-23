@@ -1,0 +1,61 @@
+@media all and (min-width: 480px) {
+    .title{
+        display: flex;
+        height: 45px;
+        width: 100%;
+        justify-content: flex-start;
+        background: #35E5FA;
+        font-family: Avenir-Heavy;
+        font-size: 18px;
+        color: #000000;
+        align-items: center;   
+    }
+    .title>p{
+        margin-left: 40px;
+    }
+    #inputtext{
+        width: 80%;
+        margin: 20px 0px;
+        display: flex;
+        justify-content: space-between;
+    }
+    input{
+        border: none;
+        display: flex;
+        margin-top: 10px;
+        font-family: Avenir-Medium;
+        font-size: 16px;
+        color: rgba(0,0,0,0.54);
+        line-height: 16px;
+        justify-content: center;
+        height: 40px;
+        width: 300px;
+        border-bottom: 2px solid rgba(0,0,0,0.42);
+    }
+    
+    input:focus{
+        outline: none;
+    }
+    #inputerror{
+        border: none;
+        display: flex;
+        margin-top: 10px;
+        font-family: Avenir-Medium;
+        font-size: 16px;
+        color: rgba(0,0,0,0.54);
+        line-height: 16px;
+        justify-content: center;
+        height: 40px;
+        width: 300px;
+        border-bottom: 2px solid red;
+    }
+    #inputerror:focus{
+        outline: none;
+    }
+    #star:hover{
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+
+
+}

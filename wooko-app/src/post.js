@@ -10,9 +10,7 @@ import StarRating from './starRating.js';
 export default class Posts extends Component{
     constructor(props){
         super(props);
-
-        this.state = {contents: []};
-               
+        this.state = {contents: []};              
     }
 
     componentDidMount(){
@@ -20,8 +18,7 @@ export default class Posts extends Component{
         .then(res => {
             const contents = res.data.slice(0, 5);  //cut posts to display first 5 posts
             this.setState({contents});
-        });
-        
+        });        
     }
     
     render() {
@@ -29,16 +26,14 @@ export default class Posts extends Component{
             <div className="page" >
                 <nav className="header">Posts</nav>
                 <div className="commentContainer">                    
-                    {this.state.contents.map(contents => <Message {...this.state} post={contents}/>)}                     
-                </div>
-                
+                    {this.state.contents.map(content => <Message key={content.id} {...this.state} post={content}/>)}                     
+                </div>            
             </div>
         );
       }
-
-
 }
 
+//Message component including toggle function which set show or hide comments, and contain Stars component and Comments component
 class Message extends Component{
     constructor(props){
         super(props);
@@ -50,7 +45,7 @@ class Message extends Component{
     toggleDiv = () =>{
         const show = this.state.show;
         this.setState({show: !show});
-        console.log(this.props.post.userid);
+        // console.log(this.props.post.userid);
     }
 
     render(){
@@ -75,14 +70,9 @@ class Message extends Component{
 }
 
 class Comments extends Component{
-    static propTypes = {
-        postid: PropTypes.number
-    };
     constructor(props){
         super(props);
-        this.state = {  comment: [],
-                        email: [],
-                        name: []};         
+        this.state = {comment: []};         
     }
     componentDidMount(){
         axios.get(`https://jsonplaceholder.typicode.com/comments?postId=` + this.props.postid) //match userID and postID
@@ -96,8 +86,10 @@ class Comments extends Component{
         return(
             <div id="comments">{this.state.comment.map(comment => <div id="comment">
                                                         <div id="body"><p id="text">{comment.body}</p></div>
-                                                        <div id="info"><div id="infoD"><p id="text">{comment.email}</p></div>
-                                                        <div id="infoD"><p id="text">{comment.name}</p></div></div>
+                                                        <div id="info">
+                                                            <div id="infoD"><p id="text">{comment.email}</p></div>
+                                                            <div id="infoD"><p id="text">{comment.name}</p></div>
+                                                        </div>
                                                     </div>)}
             </div>
         );

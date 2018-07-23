@@ -63,7 +63,7 @@ class Star extends Component{
 
     render(){
         return(
-            <div onClick={this.Press.bind(this)}>
+            <div id="star" onClick={this.Press.bind(this)}>
               {this.props.blink ? <img src={star} width={20} alt="star"/> : <img src={emptyStar} width={20} alt="emptystar"/>}
             </div>
         );
