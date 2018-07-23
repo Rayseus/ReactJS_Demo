@@ -85,11 +85,13 @@ export class TextInput extends Component {
             type={this.props.type}
             placeholder={this.props.id}
             onChange={event =>{
-               this.handleValidation(this.props.name, event.target.value);
-               this.props.onChange(this.props.name, event.target.value);
+                if(this.props.onChange){
+                    this.handleValidation(this.props.name, event.target.value);
+                    this.props.onChange(this.props.name, event.target.value);
+                }
               }}
           />
-          <p id='error'>{this.state[this.props.name].error}</p>
+          <div><p id='error'>{this.state[this.props.name].error}</p></div>
         </div>
       );
     }
@@ -161,18 +163,18 @@ export class TextInput extends Component {
                this.props.onChange('password', event.target.value);
               }}
           />
+          <div><p id='error'>{this.state.password.error}</p></div>
         </div>
         <div className="line">
-          <p id='error'>{this.state.password.error}</p>
-        <input style={{borderColor:this.state.password_confirmation.vaild ? 'rgba(0,0,0,0.42)' : 'red'}}
-          type='password'
-          placeholder='Password Confirmation'
-          onChange={event =>{
-             this.handleValidation('password_confirmation', event.target.value);
-             this.props.onChange('password_confirmation', event.target.value);
-            }}
-        />
-        <p id='error'>{this.state.password_confirmation.error}</p>
+            <input style={{borderColor:this.state.password_confirmation.vaild ? 'rgba(0,0,0,0.42)' : 'red'}}
+            type='password'
+            placeholder='Password Confirmation'
+            onChange={event =>{
+                this.handleValidation('password_confirmation', event.target.value);
+                this.props.onChange('password_confirmation', event.target.value);
+                }}
+            />
+            <div><p id='error'>{this.state.password_confirmation.error}</p></div>
       </div>
       </div>
       );
