@@ -4,6 +4,9 @@ import './components.css';
 
 
 export default class Components extends Component{
+    test(){
+        console.log("Good");
+    }
     render(){
         return(
             <div className="page">
@@ -19,7 +22,8 @@ export default class Components extends Component{
                         </div>
                     </div>
                 <div className="title"><p>Button</p></div>
-                    <div style={{width: '80%'}}><button id='submit_button' style={{margin: '40px 0px'}}>Button</button></div>
+                    <Button name={'Button'} onClick={this.test} />
+                    {/* <div style={{width: '80%'}}><button id='submit_button' style={{margin: '40px 0px'}}>Button</button></div> */}
                 <div className="title"><p>Stars Stick</p></div>
                     <div style={{width: '80%', zoom: '3', margin: '10px 0px'}}>
                         <StarRating 
@@ -38,75 +42,81 @@ export class TextInput extends Component {
       super(props);
       this.state = {
           email: {
-            vaild: true,
+            valid: true,
             error: ''
           },
           name: {
-            vaild: true,
+            valid: true,
             error: ''
           },
       };
     }
   
     handleValidation(field, value, type = 'string') {
-  
       switch (field) {
         case 'email': {
           if (value.length === 0) {
-            this.setState({email: {vaild: false, error: 'Require Input'}});
+            this.setState({email: {valid: false, error: 'Require Input'}}, ()=>{this.props.callback_valid(this.state.email.valid)});
           }
           else if (!value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-            this.setState({email: {vaild: false, error: 'Invaild Email'}});
+            this.setState({email: {valid: false, error: 'Invalid Email'}}, ()=>{this.props.callback_valid(this.state.email.valid)});
           }
           else {
-            this.setState({email: {vaild: true, error: ''}});
+            this.setState({email: {valid: true, error: ''}}, ()=>{this.props.callback_valid(this.state.email.valid)});
           }
           break;
         }
         case 'name': {
           if (value.length === 0) {
-            this.setState({name: {vaild: false, error: 'Require Input'}});
+            this.setState({name: {valid: false, error: 'Require Input'}}, ()=>{this.props.callback_valid(this.state.name.valid)});
           }
           else if (value.length > 20) {
-            this.setState({name: {vaild: false, error: 'Name should be less than 20'}});
+            this.setState(
+                {name: {valid: false, error: 'Name should be less than 20'}}, ()=>{this.props.callback_valid(this.state.name.valid)});
           }
           else {
-            this.setState({name: {vaild: true, error: ''}});
+            this.setState({name: {valid: true, error: ''}}, ()=>{this.props.callback_valid(this.state.name.valid)});
           }
           break;
         }
+        default:{
+            break;
+        }
       }
+      
     }
+
   
     render() {
-      return (
-        <div className="line">
-          <input style={{borderColor:this.state[this.props.name].vaild ? 'rgba(0,0,0,0.42)' : 'red'}}
-            type={this.props.type}
-            placeholder={this.props.id}
-            onChange={event =>{
-                if(this.props.onChange){
-                    this.handleValidation(this.props.name, event.target.value);
-                    this.props.onChange(this.props.name, event.target.value);
-                }
-              }}
-          />
-          <div><p id='error'>{this.state[this.props.name].error}</p></div>
-        </div>
-      );
+        return (
+            <div className="line">
+            <input style={{borderColor:this.state[this.props.name].valid ? 'rgba(0,0,0,0.42)' : 'red'}}
+                type={this.props.type}
+                placeholder={this.props.id}
+                onChange={event =>{
+                    if(this.props.onChange){
+                        this.handleValidation(this.props.name, event.target.value);
+                        this.props.onChange(this.props.name, event.target.value);
+                    }
+                }}
+            />
+            <div><p id='error'>{this.state[this.props.name].error}</p></div>
+            </div>
+        );
+        }
     }
-  }
   
-  export class PasswordInput extends Component{
+export class PasswordInput extends Component{
+
     constructor(props) {
       super(props);
       this.state = {
           password: {
-            vaild: true,
+            valid: true,
             error: ''
           },
           password_confirmation: {
-            vaild: true,
+            valid: true,
             error: ''
           } 
       };
@@ -117,35 +127,35 @@ export class TextInput extends Component {
     handleValidation(field, value, type = 'string') {
       if(field === 'password'){
         this.password = value;
-        if(value != this.comfirmation && this.comfirmation != ''){
-            this.setState({password_confirmation: {vaild: false, error: 'Password not match'}});
+        if(value !== this.comfirmation && this.comfirmation !== ''){
+            this.setState({password_confirmation: {valid: false, error: 'Password not match'}}, ()=>{this.props.callback_valid(this.state.password_confirmation.valid)});
         }
         else{
-            this.setState({password_confirmation: {vaild: true, error: ''}});
+            this.setState({password_confirmation: {valid: true, error: ''}}, ()=>{this.props.callback_valid(this.state.password_confirmation.valid)});
         }
         if (value.length === 0) {
-            this.setState({password: {vaild: false, error: 'Require Input'}});
+            this.setState({password: {valid: false, error: 'Require Input'}}, ()=>{this.props.callback_valid(this.state.password.valid)});
         }
         else if (value.length < 5 || value.length > 15) {
-            this.setState({password: {vaild: false, error: 'Password should be bewteen 5 to 15'}});
+            this.setState({password: {valid: false, error: 'Password should be bewteen 5 to 15'}}, ()=>{this.props.callback_valid(this.state.password.valid)});
         }
         else{
-            this.setState({password: {vaild: true, error: ''}});
+            this.setState({password: {valid: true, error: ''}}, ()=>{this.props.callback_valid(this.state.password.valid)});
         }
       }
       else{
         this.comfirmation = value;
-        if(value != this.password){
-            this.setState({password_confirmation: {vaild: false, error: 'Password not match'}});
+        if(value !== this.password){
+            this.setState({password_confirmation: {valid: false, error: 'Password not match'}}, ()=>{this.props.callback_valid(this.state.password_confirmation.valid)});
         }
         else if (value.length === 0) {
-            this.setState({password_confirmation: {vaild: false, error: 'Require Input'}});
+            this.setState({password_confirmation: {valid: false, error: 'Require Input'}}, ()=>{this.props.callback_valid(this.state.password_confirmation.valid)});
         }
         else if (value.length < 5 || value.length > 15) {
-            this.setState({password_confirmation: {vaild: false, error: 'Password should be bewteen 5 to 15'}});
+            this.setState({password_confirmation: {valid: false, error: 'Password should be bewteen 5 to 15'}}, ()=>{this.props.callback_valid(this.state.password_confirmation.valid)});
         }
         else{
-            this.setState({password_confirmation: {vaild: true, error: ''}});
+            this.setState({password_confirmation: {valid: true, error: ''}}, ()=>{this.props.callback_valid(this.state.password_confirmation.valid)});
         } 
       }
     } 
@@ -155,7 +165,7 @@ export class TextInput extends Component {
       return (
         <div>
         <div className="line">
-          <input style={{borderColor:this.state.password.vaild ? 'rgba(0,0,0,0.42)' : 'red'}}      
+          <input style={{borderColor:this.state.password.valid ? 'rgba(0,0,0,0.42)' : 'red'}}      
             type='password'
             placeholder='Password'
             onChange={event =>{
@@ -166,7 +176,7 @@ export class TextInput extends Component {
           <div><p id='error'>{this.state.password.error}</p></div>
         </div>
         <div className="line">
-            <input style={{borderColor:this.state.password_confirmation.vaild ? 'rgba(0,0,0,0.42)' : 'red'}}
+            <input style={{borderColor:this.state.password_confirmation.valid ? 'rgba(0,0,0,0.42)' : 'red'}}
             type='password'
             placeholder='Password Confirmation'
             onChange={event =>{
@@ -180,3 +190,30 @@ export class TextInput extends Component {
       );
     }
   }
+
+export class Button extends Component {
+    constructor(props) {
+        super(props);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+    }
+
+    componentWillMount() {
+        document.addEventListener('keydown', this.handleKeyPress);
+    }
+
+    handleKeyPress(event) {
+        if (event.keyCode === 13) {
+            this.props.onClick();
+        }    
+    }
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeyPress);
+    }
+
+    render() {
+        return(
+            <div id='submit_button' onClick={this.props.onClick} style={this.props.style}>{this.props.name}</div>
+        );
+    }
+
+}

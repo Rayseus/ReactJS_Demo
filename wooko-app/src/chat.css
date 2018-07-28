@@ -37,7 +37,7 @@
         align-items: flex-end; 
         margin: 30px;   
     }
-    .controlBar>button{
+    .controlBar>Button{
     height: 40px;
     width: 120px;
     background: #CE3E3E;

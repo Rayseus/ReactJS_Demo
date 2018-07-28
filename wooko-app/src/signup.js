@@ -5,10 +5,9 @@ included functions: react-route set domain address
 */
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './signup.css';
 import logo from './image/logo.JPG';
-import {TextInput, PasswordInput} from './components.js';
+import {TextInput, PasswordInput, Button} from './components.js';
 
 
 export default class Signup extends Component {
@@ -20,6 +19,7 @@ export default class Signup extends Component {
       password_confirmation: "",
       name: ""
     };
+    this.shouldSubmit = false;
   }
 
   Change = (id, value) => {
@@ -27,7 +27,8 @@ export default class Signup extends Component {
   }
 
   Submit = event => {
-    event.preventDefault();
+    if(!this.shouldSubmit)
+      return;
     const user = {
       email: this.state.email,
       password: this.state.password,
@@ -41,6 +42,10 @@ export default class Signup extends Component {
       })
   }
 
+  validation = (valid) =>{
+    this.shouldSubmit = valid;
+  }
+
   render() {
     return (
       <div className="page" >
@@ -50,16 +55,12 @@ export default class Signup extends Component {
             <img src={logo} className="logo" alt="logo" />
           </div>
           <form>
-            <TextInput id={"Email"} name={"email"} type={"email"} onChange={this.Change}/>
-            <PasswordInput text={this.state.password} onChange={this.Change}/>
-            <TextInput id={"Name"} name={"name"} type={"text"} text={this.state.name} onChange={this.Change}/>
+            <TextInput id={"Email"} name={"email"} type={"email"} onChange={this.Change} callback_valid={this.validation}/>
+            <PasswordInput onChange={this.Change} callback_valid={this.validation}/>
+            <TextInput id={"Name"} name={"name"} type={"text"} onChange={this.Change} callback_valid={this.validation}/>
           </form>
           <div>
-            <Button
-              id="submit_button"
-              type="submit"
-              onClick={this.Submit}>
-              Signup</Button>
+            <Button name={'Signup'} onClick={this.Submit} />
           </div>
         </div>
       </div>

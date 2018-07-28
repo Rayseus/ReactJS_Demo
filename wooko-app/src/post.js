@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types'
 import './post.css';
 import uparrow from './image/up-arrow.svg';
 import downarrow from './image/download.svg';
@@ -45,7 +44,6 @@ class Message extends Component{
     toggleDiv = () =>{
         const show = this.state.show;
         this.setState({show: !show});
-        // console.log(this.props.post.userid);
     }
 
     render(){

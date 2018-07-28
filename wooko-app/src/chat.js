@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import pic from './image/picture.svg';
 import './chat.css';
+import {Button} from './components.js';
+
+const BUTTON_STYLE = {
+    height: '40px',
+    width: '120px',
+    background: '#CE3E3E',
+    borderRadius: '16px',
+    fontFamily: 'Avenir-Heavy',
+    fontSize: '16px',
+    color: '#FFFFFF',
+    margin: '0px 0px'
+}
 
 export default class Chat extends Component {
     constructor(props) {
@@ -125,7 +136,6 @@ class Chatroom extends Component {
     }
 
     render() {
-        // console.log('key: ' + this.state.key);
         const sentMessage = this.state.message.map((obj, index) => {
             switch (obj.type) {
                 case 'text':
@@ -133,13 +143,15 @@ class Chatroom extends Component {
                         <p id="text">{obj.context}</p>
                         <span>{obj.ip}  -  {obj.time}</span>
                     </div>);
-                    break;
+                    
                 case 'img':
                     return (obj.context && <div key={index} id="context">
                         <img src={obj.context} alt="Uploaded images" height="50" width="50" />
                         <span>{obj.ip}  -  {obj.time}</span>
                     </div>);
-                    break;
+                    
+                default:
+                    return;
             }
         });
         return (
@@ -149,7 +161,7 @@ class Chatroom extends Component {
                 </div>
                 <div className="controlBar">
                     <input ref={abc => this.input_ref = abc} type="text" placeholder="Say something..." onChange={this.updateMessage} />
-                    <button onClick={this.submitMessage} >Send</button>
+                    <Button name={'Send'} onClick={this.submitMessage} style={BUTTON_STYLE}/>
                     <img id="pic" src={pic} alt="sentPic" onClick={this.clickInput} />
                     <input ref={ip => this.input_img = ip} style={{ display: 'none' }} type="file" onChange={this.uploadImg} />
                 </div>

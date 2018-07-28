@@ -64,6 +64,25 @@
     .line>div{
         position: absolute;
     }
-
+    #submit_button{
+        display: flex;
+        height: 50px;
+        width: 200px;
+        background: #CE3E3E;
+        border-radius: 16px;
+        font-family: Avenir-Heavy;
+        color: #FFFFFF;
+        font-size: 16px;
+        justify-content: center;
+        align-items: center;
+        margin:50px auto;
+    }
+    #submit_button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #submit_button:focus{
+        outline: none;
+    }
 
 }
