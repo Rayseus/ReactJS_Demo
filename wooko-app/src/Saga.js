@@ -114,7 +114,7 @@ function* updateMessage() {
 }
 function* fetchMessageSaga(action) {
     try {
-        const message = yield call(updateMessage);
+        yield call(updateMessage);
     } catch (e) {
         console.log(e);
     }
@@ -148,7 +148,7 @@ function* submitImageSaga(action) {
             .put(sentImage)
             .then(() => {
                 firebase.storage().ref('image').child(sentImage.name).getDownloadURL().then(url => {
-                    const upload = firebase.database().ref('message/').push({ context: url, type: "img", ip: ip, time: getTime() });
+                    firebase.database().ref('message/').push({ context: url, type: "img", ip: ip, time: getTime() });
 
                 });
             }

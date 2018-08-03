@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
 import pic from './image/picture.svg';
 import './chat.css';
 import {Button} from './components.js';
 //add redux-saga
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import { getMessage, getImage, messageReceived, requestMessage } from './actions'
+import { getMessage, getImage, requestMessage } from './actions'
 
 const BUTTON_STYLE = {
     height: '40px',
@@ -85,16 +82,14 @@ class Chatroom extends Component {
                     return (obj.context && <div key={index} id="context">
                         <p id="text">{obj.context}</p>
                         <span>{obj.ip}  -  {obj.time}</span>
-                    </div>);
-                    
+                    </div>);                    
                 case 'img':
                     return (obj.context && <div key={index} id="context">
                         <img src={obj.context} alt="Uploaded images" height="50" width="50" />
                         <span>{obj.ip}  -  {obj.time}</span>
-                    </div>);
-                    
+                    </div>);                   
                 default:
-                    return;
+                    return null;
             }
         });
         

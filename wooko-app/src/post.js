@@ -8,7 +8,7 @@ import './post.css';
 import uparrow from './image/up-arrow.svg';
 import downarrow from './image/download.svg';
 import StarRating from './starRating.js';
-import { requestData, requestCom, getPostid } from './actions'
+import { requestData, requestCom } from './actions'
 
 
 //add redux-saga
@@ -27,8 +27,6 @@ class Posts extends Component {
                 <nav className="header">Posts</nav>
                 <div className="commentContainer">
                     {results.map(content => {
-                        
-                        //dispatch({ type: GET_POSTID, payload: content.postid })
                         return <MessageWithContainer key={content.id} post={content} />
                     })}
                 </div>
@@ -46,9 +44,7 @@ class Message extends Component {
             show: false
         };
     }
-    // componentDidMount() {
-    //     this.props.requestCom(this.props.post.userId);
-    // }
+
     toggleDiv = () => {
         this.props.requestCom(this.props.post.userId);
         const show = this.state.show;
@@ -97,8 +93,8 @@ class Comments extends Component {
 }
 //listen store's change, set state to view
 const mapStateToProps = state => ({ 
-    value: state.value,
-    comment: state.comment
+    value: state.postReducer.value,
+    comment: state.postReducer.comment
 });
 //action to store
 const mapDispatchToPropsData = dispatch =>

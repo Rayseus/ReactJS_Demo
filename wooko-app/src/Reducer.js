@@ -1,5 +1,5 @@
 //import { GET_DATA_ID, GET_DATA_TITLE, GET_DATA_BODY, GET_COM_BODY, GET_COM_EMAIL, GET_COM_NAME } from './actions'
-import {GET_DATA, GET_COM, ADD_MESSAGE, ADD_IMAGE, MESSAGE_RECEIVED} from './actions';
+import {GET_DATA, GET_COM} from './actions';
 
 
 export function postReducer(state = {}, action){
