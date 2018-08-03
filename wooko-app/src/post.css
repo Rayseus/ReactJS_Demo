@@ -55,8 +55,10 @@
     .arrow{
         transform: translate(0px, 10px);
         height: 30px;
-        width: 30px;
-        
+        width: 30px;  
+    }
+    .arrow:hover{
+        cursor: pointer;
     }
     #comments{
         display: flex;

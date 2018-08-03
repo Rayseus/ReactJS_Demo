@@ -8,11 +8,14 @@ import Posts from './post.js';
 import Chat from './chat.js';
 import Components from './components.js';
 import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import store from "./Store";
 
 
 const history = createBrowserHistory();
 
 ReactDOM.render(
+    <Provider store={store}>
     <Router path="/" history={history}>
     <div>
         <Route path="/signup" component={Signup} />
@@ -20,5 +23,5 @@ ReactDOM.render(
         <Route path="/chat" component={Chat} />
         <Route path="/components" component={Components} />
     </div>
-    </Router>, document.getElementById('root'));
+    </Router></Provider>, document.getElementById('root'));
 registerServiceWorker();
