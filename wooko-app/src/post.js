@@ -7,14 +7,12 @@ import { bindActionCreators } from "redux";
 import './post.css';
 import uparrow from './image/up-arrow.svg';
 import downarrow from './image/download.svg';
-import StarRating from './starRating.js';
-import { requestData, requestCom } from './actions'
+import StarRating from './components/starRating';
+import { requestData, requestCom } from './actions/actions'
 
-
-//add redux-saga
-
+//main component for post page, contained Message component
 class Posts extends Component {
-    
+    //after rendering use lfe circle function to dispatch action to request post data
     componentDidMount() {
         this.props.requestData();
     }
@@ -41,7 +39,7 @@ class Message extends Component {
         super(props);
         this.state = {
             id: props.post.id,  //identify each post's rating star, according post's id
-            show: false
+            show: false     //indentify whether each post's comments appear or not
         };
     }
 
@@ -74,6 +72,7 @@ class Message extends Component {
     }
 }
 
+//component with comments which is contained by Message component
 class Comments extends Component {
     
     render() {
@@ -96,10 +95,10 @@ const mapStateToProps = state => ({
     value: state.postReducer.value,
     comment: state.postReducer.comment
 });
-//action to store
+//action to store for requesting post data
 const mapDispatchToPropsData = dispatch =>
     bindActionCreators({requestData}, dispatch);
-
+//action to store for requesting comment data
 const mapDispatchToPropsCom = dispatch =>
     bindActionCreators({requestCom}, dispatch);
 

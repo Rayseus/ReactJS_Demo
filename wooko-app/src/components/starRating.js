@@ -1,7 +1,7 @@
-import React, { Component } from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import PropTypes from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types';
-import star from './image/star.svg';
-import emptyStar from './image/star_empty.svg';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import star from '../image/star.svg';
+import emptyStar from '../image/star_empty.svg';
 
 
 export default class StarRating extends Component{

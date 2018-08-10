@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
-import mySaga from './Saga'
-import { postReducer, chatReducer } from './Reducer'
+import mySaga from '../saga/Saga'
+import { postReducer, chatReducer } from '../reducer/Reducer'
 
 const rootReducer = combineReducers({
     postReducer,

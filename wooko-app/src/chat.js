@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import pic from './image/picture.svg';
 import './chat.css';
-import {Button} from './components.js';
+import {Button} from './components/components';
 //add redux-saga
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getMessage, getImage, requestMessage } from './actions'
+import { getMessage, getImage, requestMessage } from './actions/actions'
 
 const BUTTON_STYLE = {
     height: '40px',

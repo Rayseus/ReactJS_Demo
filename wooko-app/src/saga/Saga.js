@@ -1,6 +1,6 @@
 import { put, call, all, take, takeLatest, fork } from 'redux-saga/effects'
 import { eventChannel } from 'redux-saga'
-import * as actions from './actions'
+import * as actions from '../actions/actions'
 import axios from 'axios';
 import firebase from 'firebase';
 

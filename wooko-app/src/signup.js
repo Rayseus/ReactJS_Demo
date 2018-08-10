@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './signup.css';
 import logo from './image/logo.JPG';
-import {TextInput, PasswordInput, Button} from './components.js';
+import {TextInput, PasswordInput, Button} from './components/components';
 
 
 export default class Signup extends Component {

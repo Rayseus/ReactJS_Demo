@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StarRating from './starRating.js';
+import StarRating from './starRating';
 import './components.css';
 
 
